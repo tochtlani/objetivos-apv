@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <title>Objetivos APV</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='%23c41230'><path fill-rule='evenodd' d='M100 14a86 86 0 1 1 0 172a86 86 0 0 1 0-172Zm0 20a66 66 0 1 0 0 132a66 66 0 0 0 0-132Z'/><path fill-rule='evenodd' d='M100 54a46 46 0 1 1 0 92a46 46 0 0 1 0-92Zm0 19a27 27 0 1 0 0 54a27 27 0 0 0 0-54Z'/><circle cx='100' cy='100' r='13'/></g></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,700;1,800&display=swap">
+  <link rel="stylesheet" href="estilos.css">
+    <script src="tema.js"></script>
+  <link rel="stylesheet" href="demo/demo.css">
+</head>
+<body>
+<div class="demo-banda" role="note">
+  <span class="demo-banda-pill">Demo</span>
+  <span class="demo-banda-txt">Datos ficticios, guardados solo en este navegador.</span>
+  <a class="demo-banda-link" href="https://github.com/RexGhidorah/objetivos-apv" target="_blank" rel="noopener">Ver el repo</a>
+  <button type="button" id="demo-reset" class="demo-banda-btn">Restablecer demo</button>
+</div>
+
+<svg class="lg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="lg-iso" viewBox="0 0 200 200">
+    <path fill-rule="evenodd" d="M100 14a86 86 0 1 1 0 172a86 86 0 0 1 0-172Zm0 20a66 66 0 1 0 0 132a66 66 0 0 0 0-132Z"/>
+    <path fill-rule="evenodd" d="M100 54a46 46 0 1 1 0 92a46 46 0 0 1 0-92Zm0 19a27 27 0 1 0 0 54a27 27 0 0 0 0-54Z"/>
+    <circle cx="100" cy="100" r="13"/>
+  </symbol>
+</svg>
+
+<section id="pantalla-login" class="lg" hidden>
+  <div class="lg-mesh" aria-hidden="true"></div>
+
+  <main class="lg-card">
+    <div class="lg-side">
+      <div>
+        <div class="lg-marca">
+          <svg class="lg-isotipo" aria-hidden="true"><use href="#lg-iso" /></svg>
+          <div class="lg-barra"></div>
+          <div class="lg-grupo">Red de<br>concesionarios</div>
+        </div>
+
+        <h1 class="lg-titulo">OBJETIVOS<br><span class="lg-shine">APV</span></h1>
+        <p class="lg-lead">Los objetivos del mes de cada asesor, capturados por su gerente y
+          entregados al reporte comercial.</p>
+      </div>
+
+      <div class="lg-pie-side">
+        <div>
+          <p class="lg-pie-eti">Captura</p>
+          <p class="lg-pie-txt">El mes en curso y los que vienen.</p>
+        </div>
+        <div class="lg-division">
+          <p class="lg-pie-eti">Divisi&oacute;n</p>
+          <p class="lg-division-txt">COMERCIAL</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg-form-pane">
+      <div class="lg-logo-mobile">
+        <svg class="lg-isotipo" aria-hidden="true"><use href="#lg-iso" /></svg>
+        <div class="lg-wordmark">
+          <span class="lg-wm-a">OBJETIVOS</span>
+          <div class="lg-wm-b"><span>A</span><span>P</span><span>V</span></div>
+        </div>
+      </div>
+
+      <div class="lg-form-inner">
+        <div class="lg-head">
+          <h2>Acceso</h2>
+          <p>Identif&iacute;cate para capturar los objetivos de tu equipo.</p>
+        </div>
+
+        <form id="form-login" autocomplete="on">
+          <div class="lg-campo">
+            <label for="login-usuario">Usuario</label>
+            <div class="lg-input-wrap">
+              <input id="login-usuario" class="lg-input" name="username" type="text" placeholder="tu.usuario"
+                     autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+              <span class="lg-icono" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="lg-campo">
+            <label for="login-password">Contrase&ntilde;a</label>
+            <div class="lg-input-wrap">
+              <input id="login-password" class="lg-input" name="password" type="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+                     autocomplete="current-password" required>
+              <span class="lg-icono" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <p id="error-login" class="lg-error" role="alert" hidden></p>
+
+          <button id="btn-login" class="lg-btn" type="submit">
+            <span id="btn-login-texto">Entrar al sistema</span>
+            <svg class="lg-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <div class="demo-acceso" aria-labelledby="demo-acceso-t">
+          <p id="demo-acceso-t" class="demo-acceso-t">Entrar a la demo como</p>
+          <div class="demo-roles">
+            <button type="button" class="demo-rol" data-usuario="laura.mendez">
+              <strong>Gerente</strong><span>Captura su equipo</span></button>
+            <button type="button" class="demo-rol" data-usuario="rh.centro">
+              <strong>RH</strong><span>Admin. acotado</span></button>
+            <button type="button" class="demo-rol" data-usuario="admin.demo">
+              <strong>Admin</strong><span>Todo + reabrir</span></button>
+          </div>
+          <p class="demo-acceso-nota">O escribe cualquier usuario de la demo (p. ej. <code>ricardo.salazar</code>); la contrase&ntilde;a puede ser cualquiera.</p>
+        </div>
+
+        <div class="lg-pie-form">
+          <span>Conexi&oacute;n segura</span>
+          <span class="lg-app-nombre">Objetivos <b>APV</b></span>
+          <div class="lg-puntos"><i class="lg-punto-rojo"></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<div id="pantalla-app" hidden>
+  <div class="app-mesh" aria-hidden="true"></div>
+
+  <div class="superior">
+    <header class="cabecera">
+      <div class="cabecera-titulo">
+        <svg class="app-isotipo" aria-hidden="true"><use href="#lg-iso" /></svg>
+        <div class="app-identidad">
+          <strong>Objetivos <em>APV</em></strong>
+          <span id="cab-sub" class="cab-sub"></span>
+        </div>
+      </div>
+      <div class="cabecera-usuario">
+        <div class="interruptor-tema" title="Cambiar tema claro / oscuro">
+          <input id="toggle-tema" type="checkbox" aria-label="Modo oscuro">
+        </div>
+        <span id="quien" class="chip"></span>
+        <button id="btn-salir" class="btn btn-fantasma" type="button">Salir</button>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Secciones">
+      <button class="tab" type="button" role="tab" data-vista="objetivos">Objetivos del mes</button>
+      <button class="tab" type="button" role="tab" data-vista="dashboard">Dashboard</button>
+            <button class="tab" type="button" role="tab" data-vista="forecast">Forecast</button>
+      <button class="tab" type="button" role="tab" data-vista="apv">Mi equipo</button>
+      <button class="tab admin-o-rh" type="button" role="tab" data-vista="admin" hidden>Administraci&oacute;n</button>
+    </nav>
+  </div>
+
+  <main>
+    <p id="aviso" class="nota nota-aviso" role="status" hidden></p>
+
+        <section id="vista-objetivos" class="vista" role="tabpanel" aria-label="Objetivos del mes">
+
+      <header class="exp">
+        <div class="exp-id">
+                    <div class="exp-linea">
+            <h2 class="exp-periodo"><span id="exp-mes">&mdash;</span> <span id="exp-anio" class="exp-anio"></span></h2>
+            <span id="sello-mes" class="sello" data-estado="">
+              <svg class="sello-icono" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path id="sello-icono-trazo" d=""/></svg>
+              <span id="sello-texto">&mdash;</span>
+            </span>
+          </div>
+          <p id="exp-estado" class="exp-estado"></p>
+        </div>
+
+        <div class="exp-nav">
+          <div class="periodo">
+            <button id="btn-mes-ant" class="btn btn-icono" type="button" aria-label="Mes anterior">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <label class="sr-only" for="f-mes">Mes</label>
+            <select id="f-mes"></select>
+            <label class="sr-only" for="f-anio">A&ntilde;o</label>
+            <input id="f-anio" type="number" min="2020" max="2100" step="1" inputmode="numeric">
+            <button id="btn-mes-sig" class="btn btn-icono" type="button" aria-label="Mes siguiente">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+                    <div class="filtro-agencia">
+            <label class="sr-only" for="f-sucursal">Agencia</label>
+            <select id="f-sucursal"></select>
+          </div>
+        </div>
+      </header>
+
+      <div class="exp-cuerpo">
+        <div class="reja-scroll">
+          <table id="tabla-objetivos" class="reja">
+            <thead>
+              <tr>
+                <th scope="col" class="col-asesor">Asesor</th>
+                                <th scope="col" class="col-num col-calc" title="Se calcula de Facturas: Facturas / 0.2">Prospectos<span class="sr-only"> (calculada)</span></th>
+                <th scope="col" class="col-num col-calc" title="Se calcula de Prospectos: 50%">Demos<span class="sr-only"> (calculada)</span></th>
+                <th scope="col" class="col-num col-calc" title="Se calcula de Prospectos: 80%">Solicitudes<span class="sr-only"> (calculada)</span></th>
+                <th scope="col" class="col-num col-calc" title="Se calcula de Prospectos: 70%">Cr&eacute;ditos<span class="sr-only"> (calculada)</span></th>
+                <th scope="col" class="col-num">Facturas</th>
+                <th scope="col" class="col-num col-calc" title="Igual a Facturas">Entregas<span class="sr-only"> (calculada)</span></th>
+                <th scope="col" class="col-cambio">&Uacute;ltimo cambio</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <aside class="exp-lado">
+          <section class="bloque">
+            <h3 id="falta-titulo">Sin capturar</h3>
+            <ul id="falta-lista" class="lista-nombres"></ul>
+          </section>
+          <section class="bloque">
+            <h3>Totales del mes</h3>
+            <dl id="totales" class="totales"></dl>
+          </section>
+        </aside>
+      </div>
+
+      <footer class="exp-pie">
+        <p id="cuenta-cambios" class="cuenta">Sin cambios por guardar.</p>
+        <div class="exp-pie-acciones">
+          <span id="estado-guardado" class="estado-guardado" role="status"></span>
+          <button id="btn-guardar" class="btn btn-primario" type="button" disabled>Guardar el mes</button>
+        </div>
+      </footer>
+    </section>
+
+            <section id="vista-dashboard" class="vista" role="tabpanel" aria-label="Dashboard" hidden>
+
+      <header class="exp">
+        <div class="exp-id">
+          <h2 class="exp-periodo"><span id="db-mes">&mdash;</span> <span id="db-anio" class="exp-anio"></span></h2>
+          <p id="db-estado" class="exp-estado"></p>
+        </div>
+        <div class="exp-nav">
+          <div class="periodo">
+            <button id="db-mes-ant" class="btn btn-icono" type="button" aria-label="Mes anterior">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <label class="sr-only" for="db-f-mes">Mes</label>
+            <select id="db-f-mes"></select>
+            <label class="sr-only" for="db-f-anio">A&ntilde;o</label>
+            <input id="db-f-anio" type="number" min="2020" max="2100" step="1" inputmode="numeric">
+            <button id="db-mes-sig" class="btn btn-icono" type="button" aria-label="Mes siguiente">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <div class="filtro-agencia">
+            <label class="sr-only" for="db-f-sucursal">Sucursal</label>
+            <select id="db-f-sucursal"></select>
+          </div>
+          <div class="filtro-agencia admin-o-rh" hidden>
+            <label class="sr-only" for="db-f-gerente">Gerente</label>
+            <select id="db-f-gerente"></select>
+          </div>
+        </div>
+      </header>
+
+      <p id="db-fuentes" class="nota nota-error" role="status" hidden></p>
+
+            <div class="db-arriba">
+        <article class="db-heroe" aria-labelledby="db-heroe-t">
+          <h3 id="db-heroe-t" class="db-rotulo">Ventas del mes</h3>
+          <p class="db-heroe-cifra"><strong id="db-heroe-real">&mdash;</strong> <span id="db-heroe-obj"></span></p>
+          <p id="db-heroe-pct" class="db-heroe-pct"></p>
+          <div class="db-barra db-barra-grande"><span id="db-heroe-lleno"></span></div>
+          <dl id="db-heroe-extra" class="db-heroe-extra"></dl>
+        </article>
+
+        <article class="db-embudo" aria-labelledby="db-embudo-t">
+          <h3 id="db-embudo-t" class="db-rotulo">Embudo contra objetivo</h3>
+          <ol id="db-embudo" class="db-etapas"></ol>
+        </article>
+      </div>
+
+            <section id="db-top" class="db-top" aria-labelledby="db-top-t" hidden>
+        <div class="db-top-cab">
+          <h3 id="db-top-t" class="db-rotulo">Top 3 agencias</h3>
+          <p class="db-top-regla">Por indicadores en 95&nbsp;% o m&aacute;s; empate, por ventas.</p>
+        </div>
+        <ol id="db-top-lista" class="db-top-lista"></ol>
+      </section>
+
+            <section class="db-tabla-caja" aria-labelledby="db-tabla-t">
+        <div class="db-tabla-cab">
+          <h3 id="db-tabla-t" class="db-rotulo">Cumplimiento por</h3>
+          <div id="db-nivel" class="segmentado" role="radiogroup" aria-label="Ver por">
+            <button type="button" role="radio" data-nivel="sucursal">Sucursal</button>
+            <button type="button" role="radio" data-nivel="gerente">Gerente</button>
+            <button type="button" role="radio" data-nivel="asesor">Asesor</button>
+          </div>
+          <p class="db-clave" aria-hidden="true">
+            <span data-tono="ok">100&nbsp;% o m&aacute;s</span>
+            <span data-tono="medio">60&ndash;99&nbsp;%</span>
+            <span data-tono="bajo">menos de 60&nbsp;%</span>
+          </p>
+        </div>
+        <div class="db-tabla-scroll">
+          <table id="db-tabla" class="db-tabla"></table>
+        </div>
+      </section>
+    </section>
+
+            <section id="vista-forecast" class="vista" role="tabpanel" aria-label="Forecast" hidden>
+
+      <header class="exp">
+        <div class="exp-id">
+          <h2 class="exp-periodo"><span id="fc-mes">&mdash;</span> <span id="fc-anio" class="exp-anio"></span></h2>
+          <p id="fc-estado" class="exp-estado"></p>
+        </div>
+        <div class="exp-nav">
+          <div class="periodo">
+            <button id="fc-mes-ant" class="btn btn-icono" type="button" aria-label="Mes anterior">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <label class="sr-only" for="fc-f-mes">Mes</label>
+            <select id="fc-f-mes"></select>
+            <label class="sr-only" for="fc-f-anio">A&ntilde;o</label>
+            <input id="fc-f-anio" type="number" min="2020" max="2100" step="1" inputmode="numeric">
+            <button id="fc-mes-sig" class="btn btn-icono" type="button" aria-label="Mes siguiente">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <div class="filtro-agencia">
+            <label class="sr-only" for="fc-f-sucursal">Sucursal</label>
+            <select id="fc-f-sucursal"></select>
+          </div>
+          <div class="filtro-agencia admin-o-rh" hidden>
+            <label class="sr-only" for="fc-f-gerente">Gerente</label>
+            <select id="fc-f-gerente"></select>
+          </div>
+        </div>
+      </header>
+
+      <p id="fc-fuente" class="nota nota-error" role="status" hidden></p>
+
+      <div class="db-arriba">
+        <article class="db-heroe" aria-labelledby="fc-heroe-t">
+          <h3 id="fc-heroe-t" class="db-rotulo">Cierre estimado de ventas</h3>
+          <p class="db-heroe-cifra"><strong id="fc-heroe-est">&mdash;</strong> <span id="fc-heroe-obj"></span></p>
+          <p id="fc-heroe-pct" class="db-heroe-pct"></p>
+          <p id="fc-heroe-parcial" class="fc-parcial" hidden></p>
+          <div id="fc-heroe-barra" class="fc-barra fc-barra-grande"></div>
+          <dl id="fc-heroe-extra" class="db-heroe-extra"></dl>
+        </article>
+
+                <article class="fc-como" aria-labelledby="fc-como-t">
+          <h3 id="fc-como-t" class="db-rotulo">C&oacute;mo se estima</h3>
+                    <div id="fc-dias" class="segmentado fc-dias" role="radiogroup" aria-label="Estimado al d&iacute;a" hidden></div>
+          <p id="fc-como-texto" class="fc-como-texto"></p>
+          <div id="fc-curva" class="fc-curva"></div>
+          <p class="fc-como-pie">Probado contra los 17 meses anteriores: a mitad de mes, el total estimado
+            suele quedar a &plusmn;10&nbsp;% del cierre real; por asesor, a uno o dos autos.</p>
+        </article>
+      </div>
+
+      <section class="db-tabla-caja" aria-labelledby="fc-tabla-t">
+        <div class="db-tabla-cab">
+          <h3 id="fc-tabla-t" class="db-rotulo">Cierre estimado por</h3>
+          <div id="fc-nivel" class="segmentado" role="radiogroup" aria-label="Ver por">
+            <button type="button" role="radio" data-nivel="sucursal">Sucursal</button>
+            <button type="button" role="radio" data-nivel="gerente">Gerente</button>
+            <button type="button" role="radio" data-nivel="asesor">Asesor</button>
+          </div>
+          <p class="db-clave fc-clave" aria-hidden="true">
+            <span class="fc-clave-lleva">Llevan</span>
+            <span class="fc-clave-resto">Estimado por venir</span>
+            <span class="fc-clave-meta">Objetivo</span>
+          </p>
+        </div>
+        <div class="db-tabla-scroll">
+          <table id="fc-tabla" class="db-tabla fc-tabla"></table>
+        </div>
+      </section>
+    </section>
+
+        <section id="vista-apv" class="vista" role="tabpanel" aria-label="Mi equipo" hidden>
+      <h2 class="titulo-vista">Mi equipo</h2>
+
+            <section class="tarjeta admin-o-rh" hidden>
+        <h3>Dar de alta un APV</h3>
+                <form id="form-apv" class="forma">
+          <div class="campo campo-crece admin-o-rh" hidden>
+            <label for="apv-gerente">Gerente</label>
+            <select id="apv-gerente" name="gerente_id"></select>
+          </div>
+          <div class="campo campo-crece">
+            <label for="apv-sucursal">Agencia</label>
+            <select id="apv-sucursal" name="sucursal" required></select>
+          </div>
+                    <div class="campo campo-crece">
+            <label for="apv-nombre">Nombre del asesor</label>
+            <select id="apv-nombre" name="nombre" required></select>
+          </div>
+          <button type="submit" class="btn btn-primario">Dar de alta</button>
+        </form>
+        <p id="aviso-nombre" class="nota nota-info" role="status" hidden></p>
+
+        <div id="duplicado" class="nota nota-aviso nota-accion" hidden>
+          <p id="duplicado-texto"></p>
+          <div class="nota-botones">
+            <button id="btn-vincular" class="btn btn-primario" type="button">S&iacute;, es la misma persona</button>
+            <button id="btn-cancelar-dup" class="btn btn-fantasma" type="button">Cancelar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="tarjeta">
+        <h3>Asesores asignados</h3>
+                <div id="filtros-apv" class="filtros-apv" hidden>
+          <div class="filtros-apv-fila">
+            <div class="filtro-apv-busca">
+              <label class="sr-only" for="apv-busca">Buscar asesor</label>
+              <input id="apv-busca" type="search" placeholder="Buscar por nombre&hellip;">
+            </div>
+            <div class="filtro-apv-combo">
+              <label class="sr-only" for="apv-filtro-gerente">Gerente</label>
+              <select id="apv-filtro-gerente"></select>
+            </div>
+            <div class="filtro-apv-combo">
+              <label class="sr-only" for="apv-filtro-agencia">Agencia</label>
+              <select id="apv-filtro-agencia"></select>
+            </div>
+          </div>
+          <p id="apv-filtro-cuenta" class="filtro-cuenta" role="status"></p>
+        </div>
+        <div class="reja-scroll">
+          <table id="tabla-apv" class="reja reja-simple">
+            <thead>
+              <tr>
+                <th scope="col">Asesor</th><th scope="col">Agencia</th>
+                <th scope="col">Gerente</th><th scope="col">Desde</th>
+                <th scope="col"><span class="sr-only">Acciones</span></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+    </section>
+
+        <section id="vista-admin" class="vista" role="tabpanel" aria-label="Administraci&oacute;n" hidden>
+      <h2 class="titulo-vista">Administraci&oacute;n</h2>
+
+      <section class="tarjeta">
+        <h3>Gerentes</h3>
+        <p class="pie-nota">La central <code>APPS</code> dice qui&eacute;n es la persona. Aqu&iacute; se
+          registra el nombre con el que el reporte la agrupa.</p>
+                <form id="form-gerente" class="forma">
+          <div class="campo campo-crece">
+            <label for="ger-nombre">Nombre</label>
+            <select id="ger-nombre" name="nombre" required></select>
+          </div>
+          <div class="campo campo-crece">
+            <label for="ger-usuario">Usuario para entrar</label>
+            <input id="ger-usuario" name="usuario" autocapitalize="none" spellcheck="false"
+                   minlength="3" required>
+          </div>
+          <div class="campo">
+            <label for="ger-rol">Perfil</label>
+            <select id="ger-rol" name="rol">
+              <option value="user" selected>Gerente</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primario">Dar de alta y generar acceso</button>
+        </form>
+        <p id="aviso-gerente" class="nota nota-info" role="status" hidden></p>
+        <p id="aviso-lista-gerentes" class="nota nota-info" role="status" hidden></p>
+        <div class="reja-scroll">
+          <table id="tabla-gerentes" class="reja reja-simple">
+            <thead><tr><th scope="col">Usuario</th><th scope="col">Nombre</th><th scope="col">Estado</th>
+              <th scope="col">Acceso</th>
+              <th scope="col"><span class="sr-only">Acciones</span></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="tarjeta solo-admin" hidden>
+        <h3>Personal de RH</h3>
+        <p class="pie-nota">Administran los equipos de sus agencias: dan de alta APV, los
+          mueven entre gerentes y capturan objetivos &mdash; solo ah&iacute;. No pueden reabrir
+          un mes cerrado ni registrar administradores.</p>
+        <form id="form-rh" class="forma">
+          <div class="campo campo-crece">
+            <label for="rh-usuario">Usuario para entrar</label>
+            <input id="rh-usuario" name="usuario" autocapitalize="none" spellcheck="false"
+                   minlength="3" required>
+          </div>
+          <div class="campo campo-crece">
+            <label for="rh-sucursal">Agencias</label>
+                        <select id="rh-sucursal" name="sucursal" multiple size="6" required
+                    aria-describedby="rh-ayuda"></select>
+          </div>
+          <button type="submit" class="btn btn-primario">Dar de alta y asignar</button>
+        </form>
+        <div id="rh-ayuda" class="nota nota-info"><p>Puedes elegir <strong>varias agencias</strong>
+          (Ctrl o Cmd para marcar m&aacute;s de una). Si el usuario es nuevo se le crea el acceso
+          con perfil RH y se genera su contrase&ntilde;a; si ya exist&iacute;a, solo se le suman
+          las agencias. Para <strong>corregir</strong> el alcance de alguien que ya est&aacute;
+          en la tabla, usa <em>Editar agencias</em> en su rengl&oacute;n: ah&iacute; se quita y se
+          pone en un solo movimiento.</p></div>
+        <div class="reja-scroll">
+          <table id="tabla-rh" class="reja reja-simple">
+            <thead><tr><th scope="col">Usuario</th><th scope="col">Agencias</th>
+              <th scope="col">Desde</th><th scope="col"><span class="sr-only">Acciones</span></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="tarjeta solo-admin" hidden>
+        <h3>Reabrir un mes</h3>
+        <p class="pie-nota">La reapertura es para un gerente y un mes. Mientras est&eacute; abierta, ese
+          gerente puede capturar un periodo ya cerrado.</p>
+        <form id="form-apertura" class="forma">
+          <div class="campo">
+            <label for="ap-anio">A&ntilde;o</label>
+            <input id="ap-anio" name="anio" type="number" min="2020" max="2100" inputmode="numeric" required>
+          </div>
+          <div class="campo">
+            <label for="ap-mes">Mes</label>
+            <select id="ap-mes" name="mes" required></select>
+          </div>
+          <div class="campo campo-crece">
+            <label for="ap-gerente">Gerente</label>
+            <select id="ap-gerente" name="gerente_id" required></select>
+          </div>
+          <div class="campo campo-crece">
+            <label for="ap-motivo">Motivo</label>
+            <input id="ap-motivo" name="motivo" placeholder="Por qu&eacute; se reabre">
+          </div>
+          <button type="submit" class="btn btn-primario">Reabrir</button>
+        </form>
+        <div class="reja-scroll">
+          <table id="tabla-aperturas" class="reja reja-simple">
+            <thead>
+              <tr><th scope="col">Periodo</th><th scope="col">Gerente</th><th scope="col">Motivo</th>
+                  <th scope="col">Autoriz&oacute;</th><th scope="col">Estado</th>
+                  <th scope="col"><span class="sr-only">Acciones</span></th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<dialog id="dlg-acceso" class="dlg" aria-labelledby="dlg-titulo">
+  <form method="dialog" class="dlg-caja">
+    <h2 id="dlg-titulo" class="dlg-titulo">Acceso creado</h2>
+    <p id="dlg-lead" class="dlg-lead"></p>
+
+    <div id="dlg-credencial" class="dlg-credencial">
+      <div class="dlg-campo-cred">
+        <span class="dlg-eti">Usuario</span>
+        <output id="dlg-usuario" class="dlg-valor"></output>
+      </div>
+      <div class="dlg-campo-cred">
+        <span class="dlg-eti">Contrase&ntilde;a</span>
+        <output id="dlg-password" class="dlg-valor dlg-password"></output>
+      </div>
+    </div>
+
+    <p id="dlg-nota" class="dlg-nota"></p>
+
+    <div class="dlg-botones">
+      <button id="dlg-copiar" class="btn" type="button">Copiar</button>
+      <button class="btn btn-primario" type="submit" value="cerrar">Ya la copi&eacute;</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlg-historial" class="dlg dlg-ancho" aria-labelledby="dlg-hist-titulo">
+  <div class="dlg-caja">
+    <div class="dlg-cab">
+      <h2 id="dlg-hist-titulo" class="dlg-titulo">Historial</h2>
+      <button id="dlg-hist-cerrar" class="btn btn-fantasma" type="button">Cerrar</button>
+    </div>
+    <p class="dlg-lead">Una asignaci&oacute;n nunca se reactiva: volver a una agencia abre un
+      periodo nuevo, y por eso aqu&iacute; quedan los dos. El mes resaltado es el que
+      <strong>cuenta en el reporte</strong>: el equipo que segu&iacute;a vigente el
+      &uacute;ltimo d&iacute;a de ese mes. Debajo de cada mes queda lo que dec&iacute;a
+      <strong>antes</strong>, con qui&eacute;n lo cambi&oacute; y cu&aacute;ndo; volver a guardar
+      lo mismo no cuenta como cambio.</p>
+    <div id="dlg-hist-cuerpo" class="hist-linea"></div>
+  </div>
+</dialog>
+
+<dialog id="dlg-rh" class="dlg" aria-labelledby="dlg-rh-titulo">
+  <form id="form-rh-editar" class="dlg-caja">
+    <h2 id="dlg-rh-titulo" class="dlg-titulo">Agencias de RH</h2>
+    <p id="dlg-rh-lead" class="dlg-lead"></p>
+
+    <div class="campo campo-crece">
+      <label for="dlg-rh-sucursal">Agencias que administra</label>
+      <select id="dlg-rh-sucursal" name="sucursal" multiple size="8"
+              aria-describedby="dlg-rh-nota"></select>
+    </div>
+
+    <p id="dlg-rh-nota" class="dlg-nota">Lo que quede marcado es lo que va a cubrir. Lo que
+      desmarques deja de ver en ese momento, y queda registrado qui&eacute;n se lo quit&oacute;.
+      Si no dejas ninguna marcada, conserva su acceso pero no ver&aacute; ning&uacute;n APV.</p>
+    <p id="dlg-rh-aviso" class="nota nota-aviso" role="status" hidden></p>
+
+    <div class="dlg-botones">
+      <button class="btn btn-fantasma" type="button" id="dlg-rh-cancelar">Cancelar</button>
+      <button class="btn btn-primario" type="submit">Guardar agencias</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script src="demo/datos.js"></script>
+<script src="demo/mock.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
